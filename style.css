@@ -1,0 +1,407 @@
+/* التصميم العام */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #fff;
+    direction: rtl;
+}
+
+/* شاشة التحميل */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #16213e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #e94560;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* الهيدر */
+header {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.game-logo {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+    transition: all 0.3s ease;
+}
+
+
+header h1 {
+    font-size: 2rem;
+    color: #e94560;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.search-container input {
+    padding: 12px 20px;
+    width: 70%;
+    max-width: 500px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    outline: none;
+}
+
+.search-container button {
+    padding: 12px 20px;
+    background-color: #e94560;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #d13354;
+}
+
+/* التنقل */
+nav {
+    background-color: #0f3460;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.categories li {
+    margin: 0 10px;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #e94560;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: #e94560;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(233, 69, 96, 0.3);
+}
+
+/* تنسيقات عامة للسوشيال ميديا */
+.social-media {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.social-btn:hover {
+    transform: scale(1.1) translateX(10px);
+    width: auto;
+    padding: 0 20px;
+}
+
+.social-text {
+    display: none;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.social-btn:hover .social-text {
+    display: inline;
+}
+
+/* ألوان خاصة بكل منصة */
+.youtube { background-color: #FF0000; }
+.facebook { background-color: #1877F2; }
+.twitter { background-color: #1DA1F2; }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.tiktok { background-color: #000000; }
+.whatsapp { background-color: #25D366; }
+.discord { background-color: #5865F2; }
+
+/* تأثيرات إضافية عند التحويم */
+.youtube:hover { background-color: #CC0000; }
+.facebook:hover { background-color: #166FE5; }
+.twitter:hover { background-color: #1991DB; }
+.tiktok:hover { background-color: #333333; }
+.whatsapp:hover { background-color: #128C7E; }
+.discord:hover { background-color: #4752C4; }
+
+/* تصميم متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .social-media {
+        flex-direction: row;
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+    
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        margin: 0 5px;
+    }
+    
+    .social-btn:hover {
+        transform: scale(1.1);
+        padding: 0;
+        width: 40px;
+    }
+    
+    .social-text {
+        display: none !important;
+    }
+}
+
+/* محتوى الألعاب */
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+.game-card {
+    perspective: 1000px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.game-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.game-card-front,
+.game-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: linear-gradient(145deg, #16213e, #0f3460);
+}
+
+.game-card-back {
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.game-rating {
+    color: #ffcc00;
+    margin: 10px 0;
+}
+
+.game-rating span {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.view-details-btn {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.view-details-btn:hover {
+    background-color: #d13354;
+}
+
+.game-description {
+    color: #ddd;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.game-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.download-btn, .youtube-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.download-btn {
+    background-color: #e94560;
+}
+
+.download-btn:hover {
+    background-color: #d13354;
+}
+
+.youtube-btn {
+    background-color: #ff0000;
+}
+
+.youtube-btn:hover {
+    background-color: #cc0000;
+}
+
+.download-btn i, .youtube-btn i {
+    margin-left: 5px;
+}
+
+/* تأثير التقليب */
+.game-card:hover .game-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .categories {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .categories li {
+        margin: 5px 0;
+    }
+    
+    .social-media {
+        flex-direction: row;
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .social-btn {
+        margin: 0 10px;
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+/* زر تغيير اللغة */
+.language-switcher {
+    margin-left: 20px;
+}
+
+#languageBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#languageBtn:hover {
+    background-color: #ff5252;
+    transform: scale(1.05);
+}
+
